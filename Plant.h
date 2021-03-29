@@ -17,8 +17,10 @@ class Plant{
 
     // les propriétés (variables) de la classe
     Plant[] voisins;
+    int pin;
     int nbVoisins;
     int state;
+    int deadline;
 
     // le constructeur
     Plant();
