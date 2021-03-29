@@ -21,15 +21,16 @@ void setup() {
 
 
   plants[1].voisins[0] = &plants[2];
+  //plants[1].voisins[1] = &plants[4];
   plants[1].nbvoisins= 1;
 
 
   plants[2].voisins[0] = &plants[3];
   plants[2].nbvoisins= 1;
 
-
-  plants[3].voisins[0] = &plants[4];
-  plants[3].nbvoisins= 1;
+  plants[3].voisins[0] = &plants[3];
+  plants[3].voisins[1] = &plants[4];
+  plants[3].nbvoisins= 2;
 
 
   plants[4].voisins[0] = &plants[0];

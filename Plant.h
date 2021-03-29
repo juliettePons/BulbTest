@@ -14,6 +14,7 @@ class Plant{
     // private : logique interne qu'on veut garder pour nous
     private:
      FIFO _buffer;
+     FIFO _tones;
     // public : pourra être appelé de l'extérieur
   public:
 
