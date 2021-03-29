@@ -8,17 +8,10 @@ int curPlant=0;
 
 void setup() {
   Serial.begin(9600);
- /*
-  // on instancie chaque plante du tableau
-  for(int i = 0; i < 5; i++){
-    Plant temp;
-    plants[i] = temp;
-  }
-*/
+
   // on spécifie les données de chaque plante
   plants[0].voisins[0] = &plants[1];
   plants[0].nbvoisins= 1;
-
 
   plants[1].voisins[0] = &plants[2];
   //plants[1].voisins[1] = &plants[4];
@@ -36,7 +29,8 @@ void setup() {
   plants[4].voisins[0] = &plants[0];
   plants[4].nbvoisins= 1;
 
-  plants[0].post(0); 
+  // impulsion de départ! c'est le big bang
+  plants[0].post(0);
 }
 
 void loop() {
@@ -48,4 +42,5 @@ void loop() {
     // on passe à la plante suivante
     curPlant= (curPlant+1)%5;
   }
+
 }
