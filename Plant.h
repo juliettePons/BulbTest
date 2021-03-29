@@ -8,33 +8,36 @@
 #include "Arduino.h"
 
 class Plant{
-  // les états de la plante
-  const int FREE; // elle n'a (plus) rien à faire
-  const int BUSY; // elle est occupée à jouer un son : ne pas interrompre!
+  
+  
 
-  // public : pourra être appelé de l'extérieur
+    // private : logique interne qu'on veut garder pour nous
+    private:
+     FIFO _buffer;
+    // public : pourra être appelé de l'extérieur
   public:
 
     // les propriétés (variables) de la classe
-    Plant[] voisins;
+
+    // les états de la plante
+    static const int FREE = 0; // elle n'a (plus) rien à faire
+    static const int BUSY = 1; // elle est occupée à jouer un son : ne pas interrompre!
+
+    Plant* voisins[4];
     int pin;
-    int nbVoisins;
+    int nbvoisins;
     int state;
     int deadline;
 
     // le constructeur
-    Plant();
+    Plant(int pin);
 
     // mettre à jour l'état de la plante
     void update();
 
     // fonction appelée pour mettre un message dans la FIFO de la plante
-    void post();
-
-    // private : logique interne qu'on veut garder pour nous
-    private:
-     FIFO_buffer;
-
+    void post(int msg);
+    
 };
 
 #endif

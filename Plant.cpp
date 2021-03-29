@@ -4,8 +4,9 @@
 // Plant.cpp : on implémente les fonctions déclarées dans Plant.h
 
 // le constructeur de la classe Plant
-Plant::Plant(){
-  nbVoisins=0;
+Plant::Plant(int pin){
+  this->pin = pin;
+  nbvoisins=0;
   state = FREE;
 
 }
@@ -19,9 +20,11 @@ void Plant :: update(){
       if(msg < 10){ //message 0 avec x nombre de sauts
             if(hops < 3){
               state = BUSY;
-              for (int i =0; i< nbVoisins;i++){            
-                voisins[i].post(msg+1);
-                Serial.write(pin + " envoit le message " + (msg+1));
+              for (int i =0; i< nbvoisins;i++){            
+                voisins[i]->post(msg+1);
+                //Serial.write(pin);
+                //Serial.write(msg+1);
+                Serial.write('he');
                 tone(pin, 500, 1500);
                 //se mettre en busy, jouer une melodie d'une certaien durée 
                 //(savoir combien de temps s'est ecoulé pendant la diffusion du message)
@@ -38,12 +41,12 @@ void Plant :: update(){
     // BUSY
     else{ //busy if la melodie joue encore on fait rien, si la durée de la melodie est passée, on repasse en free
       if(millis() >= deadline){
-        noTone();
+        noTone(pin);
         state = FREE;
       }
     }
 }
 
-void Plant ::post(int msg){
+void Plant :: post(int msg){
   _buffer.push(msg);
 }
