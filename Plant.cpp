@@ -1,11 +1,13 @@
 #include "Arduino.h"
 #include "FIFO.h"
 #include "Plant.h"
-// le constructeur de la classe plant
+// Plant.cpp : on implémente les fonctions déclarées dans Plant.h
+
+// le constructeur de la classe Plant
 Plant::Plant(){
   nbVoisins=0;
   state = FREE;
-  
+
 }
 
 void Plant :: update(){
@@ -21,7 +23,7 @@ void Plant :: update(){
          }
     }
       }else if(msg < 20){// message 1 avec x nombre de sauts (passages d'une plante "relais" à une autre)
-        
+
         }
     }
 
